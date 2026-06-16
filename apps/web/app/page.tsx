@@ -1,9 +1,13 @@
+import Hero from "@/components/landing/Hero";
+import Navbar from "@/components/landing/Navbar";
+import Features from "@/components/landing/Features";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <h1 className="text-5xl font-bold">
-        FinFlow 🚀
-      </h1>
+    <main className="min-h-screen bg-white">
+      <Navbar />
+      <Hero />
+      <Features />
     </main>
   );
 }
