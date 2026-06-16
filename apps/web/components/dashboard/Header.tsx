@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Avatar,
   AvatarFallback,
@@ -9,6 +10,13 @@ import {
 
 export default function Header() {
   const [q, setQ] = useState("");
+  const router = useRouter();
+
+  function handleLogout() {
+    window.localStorage.removeItem("jwt");
+    window.localStorage.removeItem("user");
+    router.replace("/login");
+  }
 
   return (
     <header className="flex items-center justify-between gap-6 p-6">
@@ -30,6 +38,13 @@ export default function Header() {
 
       <div className="flex items-center gap-4">
         <button className="rounded-md px-3 py-2 text-sm hover:bg-zinc-100">🔔</button>
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="rounded-md bg-zinc-100 px-3 py-2 text-sm hover:bg-zinc-200"
+        >
+          Logout
+        </button>
 
         <Avatar>
           <AvatarImage src="/avatar.jpg" alt="Leela" />
