@@ -227,6 +227,7 @@ export default function GoalsManager() {
       resetForm();
       setFormVisible(false);
       await loadGoals();
+      window.dispatchEvent(new Event("dashboard-refresh"));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save goal.");
     } finally {
@@ -266,6 +267,7 @@ export default function GoalsManager() {
       }
 
       await loadGoals();
+      window.dispatchEvent(new Event("dashboard-refresh"));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to delete goal.");
     }

@@ -192,6 +192,7 @@ export default function RecentTransactions() {
       resetForm();
       setFormVisible(false);
       await loadTransactions();
+      window.dispatchEvent(new Event("dashboard-refresh"));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Unable to save transaction.");
     } finally {
@@ -231,6 +232,7 @@ export default function RecentTransactions() {
       }
 
       await loadTransactions();
+      window.dispatchEvent(new Event("dashboard-refresh"));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Unable to delete transaction.");
     }
