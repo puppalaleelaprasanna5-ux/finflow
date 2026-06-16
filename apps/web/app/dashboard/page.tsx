@@ -4,12 +4,15 @@ import SpotlightCard from "../../components/dashboard/SpotlightCard";
 import GoalCard from "../../components/dashboard/GoalCard";
 import RecentTransactions from "../../components/dashboard/RecentTransactions";
 import LifeVaultCard from "../../components/dashboard/LifeVaultCard";
+import DashboardCharts from "../../components/dashboard/DashboardCharts";
 
 export default function Page() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
         <DashboardSummary />
+
+        <DashboardCharts />
 
         <div className="grid gap-6 md:grid-cols-3">
           <div className="md:col-span-2">
