@@ -8,9 +8,13 @@ import { Button } from "@/components/ui/button";
 export default function AuthForm({
   mode = "login",
   onSubmit,
+  isSubmitting,
+  serverError,
 }: {
   mode?: "login" | "register" | "forgot";
-  onSubmit?: (data: any) => Promise<void> | void;
+  onSubmit?: (data: { email: string; password: string; remember: boolean }) => Promise<void> | void;
+  isSubmitting?: boolean;
+  serverError?: string;
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,13 +36,18 @@ export default function AuthForm({
     return true;
   }
 
-  async function handle(e: React.FormEvent) {
+  async function handle(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!validate()) return;
+    setError("");
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 800));
-    setLoading(false);
-    onSubmit?.({ email, password, remember });
+    try {
+      await onSubmit?.({ email, password, remember });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -70,11 +79,11 @@ export default function AuthForm({
         {mode === "login" && <a href="/forgot-password" className="text-sm text-zinc-600">Forgot Password?</a>}
       </div>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {(error || serverError) && <p className="text-sm text-red-600">{error || serverError}</p>}
 
       <div>
-        <Button type="submit" className="w-full" disabled={loading}>
-          {loading ? "Loading..." : mode === "login" ? "Sign in" : mode === "register" ? "Create account" : "Send reset link"}
+        <Button type="submit" className="w-full" disabled={loading || isSubmitting}>
+          {loading || isSubmitting ? "Loading..." : mode === "login" ? "Sign in" : mode === "register" ? "Create account" : "Send reset link"}
         </Button>
       </div>
     </form>
