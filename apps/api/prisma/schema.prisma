@@ -20,7 +20,7 @@ model User {
   createdAt    DateTime      @default(now())
   goals        Goal[]
   transactions Transaction[]
-  lifeMoments  LifeMoment[]
+  lifeVaults   LifeVault[]
 }
 
 model Goal {
@@ -51,12 +51,18 @@ model Transaction {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model LifeMoment {
-  id          String   @id @default(cuid())
-  title       String
-  description String?
-  imageUrl    String?
-  createdAt   DateTime @default(now())
+model LifeVault {
+  id           String   @id @default(cuid())
+  title        String
+  description  String?
+  category     String
+  fileName     String
+  originalName String
+  mimeType     String
+  fileSize     Int
+  filePath     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
