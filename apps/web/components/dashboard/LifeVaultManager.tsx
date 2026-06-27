@@ -77,7 +77,7 @@ export default function LifeVaultManager() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:4000/api/life-vault", {
+      const response = await fetch("https://finflow-production-55d0.up.railway.app/api/life-vault", {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },
@@ -123,7 +123,7 @@ export default function LifeVaultManager() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:4000/api/life-vault", {
+      const response = await fetch("https://finflow-production-55d0.up.railway.app/api/life-vault", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${jwt}`,
@@ -160,7 +160,7 @@ export default function LifeVaultManager() {
     }
 
     try {
-      const response = await fetch(`http://localhost:4000/api/life-vault/${id}`, {
+      const response = await fetch(`https://finflow-production-55d0.up.railway.app/api/life-vault/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${jwt}`,
@@ -281,7 +281,7 @@ export default function LifeVaultManager() {
 
               <div className="mt-4 flex flex-wrap gap-2">
                 <Button type="button" variant="outline" size="sm" asChild>
-                  <a href={`http://localhost:4000${document.filePath}`} target="_blank" rel="noreferrer">
+                  <a href={`https://finflow-production-55d0.up.railway.app${document.filePath}`} target="_blank" rel="noreferrer">
                     Open
                   </a>
                 </Button>

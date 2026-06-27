@@ -80,7 +80,7 @@ export default function RecentTransactions() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:4000/api/transactions", {
+      const response = await fetch("https://finflow-production-55d0.up.railway.app/api/transactions", {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },
@@ -163,8 +163,8 @@ export default function RecentTransactions() {
       };
 
       const url = editingId
-        ? `http://localhost:4000/api/transactions/${editingId}`
-        : "http://localhost:4000/api/transactions";
+        ? `https://finflow-production-55d0.up.railway.app/api/transactions/${editingId}`
+        : "https://finflow-production-55d0.up.railway.app/api/transactions";
       const method = editingId ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -211,7 +211,7 @@ export default function RecentTransactions() {
     }
 
     try {
-      const response = await fetch(`http://localhost:4000/api/transactions/${transactionId}`, {
+      const response = await fetch(`https://finflow-production-55d0.up.railway.app/api/transactions/${transactionId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${jwt}`,

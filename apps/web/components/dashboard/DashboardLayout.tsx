@@ -18,7 +18,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
     async function verifyToken() {
       try {
-        const response = await fetch("http://localhost:4000/api/auth/me", {
+        const response = await fetch("https://finflow-production-55d0.up.railway.app/api/auth/me", {
           headers: {
             Authorization: `Bearer ${jwt}`,
           },

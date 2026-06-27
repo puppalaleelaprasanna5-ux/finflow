@@ -120,7 +120,7 @@ export default function GoalsManager() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:4000/api/goals", {
+      const response = await fetch("https://finflow-production-55d0.up.railway.app/api/goals", {
         headers: {
           ...authHeaders,
         },
@@ -197,8 +197,8 @@ export default function GoalsManager() {
     };
 
     const url = editingGoalId
-      ? `http://localhost:4000/api/goals/${editingGoalId}`
-      : "http://localhost:4000/api/goals";
+      ? `https://finflow-production-55d0.up.railway.app/api/goals/${editingGoalId}`
+      : "https://finflow-production-55d0.up.railway.app/api/goals";
     const method = editingGoalId ? "PUT" : "POST";
 
     try {
@@ -246,7 +246,7 @@ export default function GoalsManager() {
     }
 
     try {
-      const response = await fetch(`http://localhost:4000/api/goals/${goalId}`, {
+      const response = await fetch(`https://finflow-production-55d0.up.railway.app/api/goals/${goalId}`, {
         method: "DELETE",
         headers: {
           ...authHeaders,

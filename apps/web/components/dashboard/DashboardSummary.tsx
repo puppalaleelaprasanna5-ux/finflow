@@ -72,7 +72,7 @@ export default function DashboardSummary() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:4000/api/dashboard/summary", {
+      const response = await fetch("https://finflow-production-55d0.up.railway.app/api/dashboard/summary", {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },

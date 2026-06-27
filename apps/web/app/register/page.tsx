@@ -17,7 +17,7 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:4000/api/auth/register", {
+      const response = await fetch("https://finflow-production-55d0.up.railway.app/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

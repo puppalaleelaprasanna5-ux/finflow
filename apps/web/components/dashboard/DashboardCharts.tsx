@@ -49,7 +49,7 @@ export default function DashboardCharts() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("http://localhost:4000/api/dashboard/summary", {
+      const res = await fetch("https://finflow-production-55d0.up.railway.app/api/dashboard/summary", {
         headers: { Authorization: `Bearer ${jwt}` },
       });
 
